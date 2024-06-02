@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
 import Home from "../Pages/Home/home/Home";
 import AvailableCamp from "../Pages/AvailableCamp/AvailableCamp";
+import Login from "../Pages/login/Login";
 
 
 
@@ -17,11 +18,11 @@ import AvailableCamp from "../Pages/AvailableCamp/AvailableCamp";
       {
         path:'availableCamp',
         element:<AvailableCamp></AvailableCamp>
-      }
-      // {
-      //   path: '/login',
-      //   element: <Login></Login>
-      // },
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
+      },
       // {
       //   path: '/register',
       //   element: <Register></Register>

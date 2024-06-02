@@ -53,6 +53,9 @@ const Navber = () => {
             <li className="btn   rounded-xl  bg-slate-300 ">
                 <Link to={'/availableCamp'}> <div>Available Camp</div></Link>
               </li>
+              <li className="btn   rounded-xl  bg-slate-300 ">
+                <Link to={'/login'}> <div>Login</div></Link>
+              </li>
   
   
             {/* {
