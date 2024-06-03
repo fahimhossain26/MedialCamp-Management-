@@ -18,7 +18,7 @@ const Login = () => {
     return (
         <>
             <Helmet>
-                <title>FoodTopia || Sign Up</title>
+                <title>FoodTopia || Login</title>
 
             </Helmet>
 
@@ -32,23 +32,11 @@ const Login = () => {
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         {/* onSubmit={handleSubmit(onSubmit)} */}
                         <form   onSubmit={handleSubmit(onSubmit)} className="card-body">
-                            <h1 className="text-3xl font-bold text-center"> Sign up </h1>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Name</span>
-                                </label>
-                                <input name='name' {...register("name", { required: true })} type="text" placeholder="name" className="input input-bordered" />
-                                {errors.name && <span className='text-red-500'>This field is required</span>}
-                            </div>
+                            <h1 className="text-3xl font-bold text-center"> Login</h1>
+                          
 
 
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Phohto Url</span>
-                                </label>
-                                <input name='photoURL' {...register("photoURL", { required: true })} type="photoURL" placeholder="photoURL" className="input input-bordered" />
-                                {errors.name && <span className='text-red-500'>This field is required</span>}
-                            </div>
+                         
 
 
                             <div className="form-control">
@@ -88,7 +76,7 @@ const Login = () => {
                             <div className="divider">OR</div>
                             {/* <SocialLogin></SocialLogin> */}
                         </form>
-                        <p className=' my-4 text-center text-orange-600 font-bold'>Already have an Account ? <Link to={'/'}>Login</Link></p>
+                        <p className=' my-4 text-center text-orange-600 font-bold'>Already have an Account ? <Link to={'/signup'}>signUp</Link></p>
                     </div>
                 </div>
             </div>
