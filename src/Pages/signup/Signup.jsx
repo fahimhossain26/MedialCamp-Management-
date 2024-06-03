@@ -1,8 +1,12 @@
 
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { useForm } from "react-hook-form"
+import { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
+import SocialLogin from '../../Components/SocialLogin';
 
 
    
@@ -15,13 +19,43 @@ const Signup = () => {
 
         formState: { errors },
     } = useForm()
+    const {createUser,updateUserProfile,logOut}=useContext(AuthContext);
+    const navigate = useNavigate();
+    const location=useLocation();
+    const from=location.state?.from?.pathname || '/';
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) =>{
+        console.log(data)
+        createUser(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user
+            console.log(loggedUser);
+            updateUserProfile(data.name, data.photoURL)
+            .then(() => {
+                  console.log('user profile info updated ');
+                   reset(); 
+                   Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "signIn sucess fully ",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  navigate('/login')
+             })
+             .catch(error=>console.log(error))
+        })
+       
+
+          
+                
+
+    } 
     
     return (
         <>
         <Helmet>
-            <title>FoodTopia || Sign Up</title>
+            <title> MCMS || Sign Up</title>
 
         </Helmet>
 
@@ -89,10 +123,13 @@ const Signup = () => {
                             <input className="btn btn-primary" type="submit" value="Sign up" />
                         </div>
                         <div className="divider">OR</div>
-                        {/* <SocialLogin></SocialLogin> */}
+                        
+                          <SocialLogin></SocialLogin>
                     </form>
                     <p className=' my-4 text-center text-orange-600 font-bold'>Already have an Account ? <Link to={'/login'}>Login</Link></p>
+                   
                 </div>
+                
             </div>
         </div>
     </>

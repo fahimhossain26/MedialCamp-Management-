@@ -1,7 +1,15 @@
+import { createContext, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 
 const Navber = () => {
+  const{user,logOut}=useContext(AuthContext)
+  const handelLogout=()=>{
+    logOut()
+    .then(()=>{})
+    .catch(error=>console.log(error))
+    }
     return (
         <div className="navbar bg-base-100  px-4 mx-auto shadow-2xl  z-10  ">
         <div className="navbar-start">
@@ -19,12 +27,9 @@ const Navber = () => {
               </li>
            
               {
-                (
-                  <li>
-                    <a>Dashbord</a>
-                   
-                  </li>
-                )
+              
+
+            
               }
   
   
@@ -53,42 +58,22 @@ const Navber = () => {
             <li className="btn   rounded-xl  bg-slate-300 ">
                 <Link to={'/availableCamp'}> <div>Available Camp</div></Link>
               </li>
-              <li className="btn   rounded-xl  bg-slate-300 ">
+              {/* <li className="btn   rounded-xl  bg-slate-300 ">
                 <Link to={'/login'}> <div>Login</div></Link>
-              </li>
+              </li> */}
   
   
-            {/* {
-              user && (
-                <div className="dropdown dropdown-hover z-50">
-                  <div tabIndex={0} role="button" className="btn   rounded-xl  bg-slate-300 ">Dashboard</div>
-                  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                    <li>
-                      <Link to={'/add-service'} className='justify-between '>Add Service</Link>
-                    </li>
-                    <li>
-                        <Link to={'/manage-service'}>Manage Service</Link>
-                      </li>
-                      <li>
-                        <Link to={'/booked-service'}>Booked-Services</Link>
-                      </li>
-                      <li>
-                        <Link to={'/service-todo'}>Service-To-Do</Link>
-                      </li>
-                  </ul>
-                </div>
-              )
-            } */}
+            
   
   
   
   
-            {/* {
+             {
               !user && (
                 <li className=" p-2 rounded-xl  bg-slate-300">
                   <Link to={'/login'}> <div>Login</div></Link>
                 </li>)
-            } */}
+            } 
   
           </ul>
         </div>
@@ -98,7 +83,7 @@ const Navber = () => {
   
   
         
-          {
+          { user&& 
              (
               <div className='dropdown dropdown-end z-50'>
                 <div
@@ -110,7 +95,7 @@ const Navber = () => {
                     <img
                       referrerPolicy='no-referrer'
                       alt='User Profile Photo'
-                      src="asd"
+                      src={user?.photoURL}
                     />
                   </div>
                 </div>
@@ -118,29 +103,18 @@ const Navber = () => {
                   tabIndex={0}
                   className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 '
                 >
-                  {/* <li>
-                    <div className='justify-between '>Add Service</div>
-                  </li>
-                  <li>
-                    <div>Manage Service</div>
-                  </li>
-                  <li>
-                    <div>Booked-Services</div>
-                  </li>
-                  <li>
-                    <div>Service-To-Do</div>
-                  </li> */}
+                
                    <li>
-                    <div>DasBoard</div>
+                    <div> name: {user.displayName}</div>
                   </li>
   
                   <li>
-                    <div>email</div>
+                    <div>{user?.email}</div>
                   </li>
   
-                  <li className='mt-2'>
-                    <button className='bg-gray-200 block text-center'>Logout</button>
-                  </li>
+               <li className='mt-2'>
+                <button onClick={handelLogout} className='bg-gray-200 block text-center'>Logout</button>
+                </li>
                 </ul>
               </div>
             )
