@@ -1,11 +1,12 @@
-// import { useContext } from "react";
-
-// import { AuthContext } from "../../Provider/FirebaseProvider";
-
+ import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
-// const UseAuth = () => {
-//     const all= useContext(AuthContext)
-//     return  all;
-// };
-// export default UseAuth;
+
+
+
+const UseAuth = () => {
+    const all= useContext(AuthContext)
+    return  all;
+ };
+ export default UseAuth;

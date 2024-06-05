@@ -20,38 +20,48 @@ const Login = () => {
     // const onSubmit = (data) => console.log(data)
 
     // const [disabled,setDisable]=useState(true);
-    const {signIn}=useContext(AuthContext);
-    const Navigate=useNavigate();
-    const location=useLocation();
-    const from=location.state?.from?.pathname || '/';
-    console.log('state in the location loin page ',location.state);
-  
-   
-      const handelLogin=event=>{
-          event.preventDefault();
-          const form = event.target;
-          const email=form.email.value;
-          const password=form.password.value;
-           console.log(email,password);
-          signIn(email,password)
-          .then(result=>{
-            const user=result.user;
-            console.log(user);
-  //  sweet alaert
-  Swal.fire({
-    position: "top-end",
-    icon: "success",
-    title: "Your work has been saved",
-    showConfirmButton: false,
-    timer: 1500
-  });
-  
-  Navigate(from,{replace:true});
-  
-  
-          })
-      }
-     
+    const { signIn } = useContext(AuthContext);
+    const Navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+    console.log('state in the location loin page ', location.state);
+
+
+    const handelLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                //  sweet alaert
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+                Navigate(from, { replace: true });
+
+
+            })
+            .catch(error=>{
+                console.log(error);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Your email or pass is wrong ",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+    }
+
 
 
     return (
@@ -72,10 +82,10 @@ const Login = () => {
         //                 {/* onSubmit={handleSubmit(onSubmit)} */}
         //                 <form   onSubmit={handleSubmit(onSubmit)} className="card-body">
         //                     <h1 className="text-3xl font-bold text-center"> Login</h1>
-                          
 
 
-                         
+
+
 
 
         //                     <div className="form-control">
@@ -121,50 +131,50 @@ const Login = () => {
         //     </div>
         // </>
         <>
-        <Helmet>
+            <Helmet>
                 <title>MCMS|| Login</title>
-                
+
             </Helmet>
 
-        <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col  lg:flex-row">
-          <div className=" w-1/2 mr-5">
-            
-            <img src='https://i.postimg.cc/CxnYtGcD/giphy-2.gif' alt="" />
-          </div>
-          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form  onSubmit={handelLogin} className="card-body">
-            <h1 className="text-3xl font-bold text-center">Login </h1>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input name='email' type="email" placeholder="email" className="input input-bordered" />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input name='password' type="password" placeholder="password" className="input input-bordered"  />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                </label>
-              </div>
-            
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col  lg:flex-row">
+                    <div className=" w-1/2 mr-5">
 
-              <div className="form-control mt-6">
-                 
-                <input className="btn btn-primary" type="submit" value="Login" />
-              </div>
-              <div className="divider">OR</div>
-             
-              <SocialLogin></SocialLogin>
-            </form>
-            <p className=' my-4 text-center text-orange-600 font-bold'>New to car doctor? <Link to={'/signUp'}>Sign Up</Link></p>
-          </div>
-        </div>
-      </div>
-       </>
+                        <img src='https://i.postimg.cc/CxnYtGcD/giphy-2.gif' alt="" />
+                    </div>
+                    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                        <form onSubmit={handelLogin} className="card-body">
+                            <h1 className="text-3xl font-bold text-center">Login </h1>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input name='email' type="email" placeholder="email" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input name='password' type="password" placeholder="password" className="input input-bordered" />
+                                <label className="label">
+                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                </label>
+                            </div>
+
+
+                            <div className="form-control mt-6">
+
+                                <input className="btn btn-primary" type="submit" value="Login" />
+                            </div>
+                            <div className="divider">OR</div>
+
+                            <SocialLogin></SocialLogin>
+                        </form>
+                        <p className=' my-4 text-center text-orange-600 font-bold'>New to car doctor? <Link to={'/signUp'}>Sign Up</Link></p>
+                    </div>
+                </div>
+            </div>
+        </>
     );
 };
 

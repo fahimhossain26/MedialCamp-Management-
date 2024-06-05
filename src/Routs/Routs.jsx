@@ -4,6 +4,7 @@ import Home from "../Pages/Home/home/Home";
 import AvailableCamp from "../Pages/AvailableCamp/AvailableCamp";
 import Login from "../Pages/login/Login";
 import Signup from "../Pages/signup/Signup";
+import CampDetails from "../Components/medicalCamps/CampDetails";
 
 
 
@@ -27,6 +28,11 @@ import Signup from "../Pages/signup/Signup";
       {
         path:'signup',
         element:<Signup></Signup>
+      },
+      {
+        path:'/camp/:id',
+        element:<CampDetails></CampDetails>,
+        // loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/camps/${params.id}`)  
       }
       // {
       //   path: '/register',
