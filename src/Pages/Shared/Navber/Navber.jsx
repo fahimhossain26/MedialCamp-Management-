@@ -108,8 +108,11 @@ const Navber = () => {
                     <div> name: {user.displayName}</div>
                   </li>
   
-                  <li>
+                  {/* <li>
                     <div>{user?.email}</div>
+                  </li> */}
+                  <li>
+                    <div><Link to='/dashboard'> <button className="className='bg-gray-200 block text-center"> DashBoard</button></Link></div>
                   </li>
   
                <li className='mt-2'>

@@ -23,7 +23,8 @@ const Login = () => {
     const { signIn } = useContext(AuthContext);
     const Navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
+    // const from = location.state?.from?.pathname || '/';
+    const from = location?.state || '/';
     console.log('state in the location loin page ', location.state);
 
 
@@ -46,18 +47,22 @@ const Login = () => {
                     timer: 1500
                 });
 
-                Navigate(from, { replace: true });
+                // Navigate(from, { replace: true });
+                Navigate(from);
 
 
             })
             .catch(error=>{
                 console.log(error);
                 Swal.fire({
-                    position: "top-end",
+                    position: "top-center",
                     icon: "error",
                     title: "Your email or pass is wrong ",
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 500,
+                    
+                        
+                      
                 });
             })
     }

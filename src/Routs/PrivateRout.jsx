@@ -15,7 +15,8 @@ const PrivateRout = ({children}) => {
         return children;
 
     }
-    return <Navigate to='/login' state={{From: location}} replace></Navigate>
-};
+    // return <Navigate to='/login' state={{From: location}} replace='true'></Navigate>
+    return <Navigate to='/login' state={location.pathname} replace='true'></Navigate>
+}
 
 export default PrivateRout;

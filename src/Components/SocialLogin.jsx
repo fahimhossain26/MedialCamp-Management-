@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa6";
 // import UseAuth from "../../hookes/UseAuth";
 // import UseAxiosPublic from "../../hookes/UseAxiosPublic";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -12,11 +12,13 @@ const SocialLogin = () => {
     const { googleSignIn } = useContext(AuthContext);
     // const axiosPublic=UseAxiosPublic();
     const navigate=useNavigate();
+    const location=useLocation()
+    const from = location?.state || '/';
     const handelgoogleSignin = () => {
         googleSignIn()
             .then(result => {
                 console.log(result.user);
-                navigate('/')
+                navigate(from)
                 Swal.fire({
                     position: "top-end",
                     icon: "success",

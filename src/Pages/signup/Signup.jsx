@@ -19,7 +19,7 @@ const Signup = () => {
 
         formState: { errors },
     } = useForm()
-    const {createUser,updateUserProfile,logOut}=useContext(AuthContext);
+    const {createUser,updateUserProfile,logOut,loading}=useContext(AuthContext);
     const navigate = useNavigate();
     const location=useLocation();
     const from=location.state?.from?.pathname || '/';

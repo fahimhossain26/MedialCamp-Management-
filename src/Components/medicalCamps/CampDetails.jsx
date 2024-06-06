@@ -25,7 +25,7 @@ const CampDetails = () => {
     return (
         <div className='flex flex-col md:flex-row justify-around gap-5  items-center min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto '>
       {/* Job Details */}
-      <div className='flex-1  px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px] mt-20'>
+      <div className='flex-1  px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px] mt-20 '>
         <div className='flex items-center justify-between'>
           <span className='text-sm font-light text-gray-800 '>
 
@@ -41,16 +41,16 @@ const CampDetails = () => {
           
 
           </h1>
-          <img className="h-96 w-auto" src={camp?.image} alt="" />
+          <img className="h-96 w-auto mx-auto " src={camp?.image} alt="" />
           
 
-          <p className='mt-2 text-lg text-gray-600 '>
+          <p className='mt-2 text-lg text-gray-600 ml-20  '>
             {camp?.description}
           </p>
-          <p className='mt-6 text-sm font-bold text-gray-600 '>
+          <p className='mt-6 text-sm font-bold text-gray-600 ml-20 '>
           Service Provider Information:
           </p>
-          <div className='flex items-center gap-5'>
+          <div className='flex items-center gap-5 '>
             {/* <div>
               <p className='mt-2 text-sm  text-gray-600 '>Name:{buyer?.name}</p>
               <p className='mt-2 text-sm  text-gray-600 '>
@@ -61,23 +61,27 @@ const CampDetails = () => {
               <img src={buyer?.photo} alt='' />
             </div> */}
           </div>
-          <p className=' text-lg font-bold text-gray-600 '>
+        <div>
+        <p className=' text-lg font-bold text-gray-600 ml-20 '>
             professional doctor :{camp?.healthcareProfessional}
           </p>
-          <p className=' text-lg font-bold text-gray-600 '>
+          <p className=' text-lg font-bold text-gray-600 ml-20  '>
             Service Area :{ camp?.location}
           </p>
-          <p className='mt-6 text-lg font-bold text-gray-600 '>
+          <p className='mt-6 text-lg font-bold text-gray-600  ml-20 '>
             Price:{camp?.campFees}$
           </p>
+        </div>
           
         </div>
       </div>
+
       {/* Place A Bid Form */}
-      <section className='p-6 w-full  bg-white rounded-md shadow-md flex-1 md:min-h-[350px] bg-blue-400'>
+
+      {/* <section className='p-6 w-full  bg-white rounded-md shadow-md flex-1 md:min-h-[350px] bg-blue-400'>
         <h2 className='text-2xl font-semibold text-gray-700 capitalize text-center text-white '>
           book Now
-        </h2>
+        </h2> */}
 
         {/* <form onSubmit={handelFromSubmit}>
           <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
@@ -143,7 +147,7 @@ const CampDetails = () => {
 
 
         {/* <Modal></Modal> */}
-      </section>
+      {/* </section> */}
     </div>
     );
 };

@@ -5,6 +5,9 @@ import AvailableCamp from "../Pages/AvailableCamp/AvailableCamp";
 import Login from "../Pages/login/Login";
 import Signup from "../Pages/signup/Signup";
 import CampDetails from "../Components/medicalCamps/CampDetails";
+import PrivateRout from "./PrivateRout";
+import ErrorPage from "../Pages/errorPage/ErrorPage";
+import DashboardLayout from "../Layouts/DashboardLayout";
 
 
 
@@ -12,6 +15,7 @@ import CampDetails from "../Components/medicalCamps/CampDetails";
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -31,18 +35,19 @@ import CampDetails from "../Components/medicalCamps/CampDetails";
       },
       {
         path:'/camp/:id',
-        element:<CampDetails></CampDetails>,
-        // loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/camps/${params.id}`)  
-      }
-      // {
-      //   path: '/register',
-      //   element: <Register></Register>
-      // }
-
-
-
+        element: <PrivateRout> 
+           <CampDetails></CampDetails>
+        </PrivateRout>
+       
+      },
     ]
+  
   },
+  {
+    path:'/dashboard',
+    element:<DashboardLayout></DashboardLayout>,
+    children:[],
+    }
 ]);
 
 
