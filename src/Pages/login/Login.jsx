@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 // import { useForm } from "react-hook-form"
 import Swal from 'sweetalert2';
-import { useContext, useState } from 'react';
+import { useContext, } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import SocialLogin from '../../Components/SocialLogin';
 const Login = () => {

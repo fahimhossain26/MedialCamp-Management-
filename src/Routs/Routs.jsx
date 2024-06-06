@@ -8,46 +8,63 @@ import CampDetails from "../Components/medicalCamps/CampDetails";
 import PrivateRout from "./PrivateRout";
 import ErrorPage from "../Pages/errorPage/ErrorPage";
 import DashboardLayout from "../Layouts/DashboardLayout";
+import Statistis from "../Pages/common/Statistis";
+import AddCamp from "../Pages/dasboard/Organizer/AddCamp";
+import Listing from "../Pages/dasboard/Organizer/Listing";
 
 
 
- export const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
         element: <Home></Home>
       },
       {
-        path:'availableCamp',
-        element:<AvailableCamp></AvailableCamp>
+        path: 'availableCamp',
+        element: <AvailableCamp></AvailableCamp>
       },
       {
         path: '/login',
         element: <Login></Login>
       },
       {
-        path:'signup',
-        element:<Signup></Signup>
+        path: 'signup',
+        element: <Signup></Signup>
       },
       {
-        path:'/camp/:id',
-        element: <PrivateRout> 
-           <CampDetails></CampDetails>
+        path: '/camp/:id',
+        element: <PrivateRout>
+          <CampDetails></CampDetails>
         </PrivateRout>
-       
+
       },
     ]
-  
+
   },
   {
-    path:'/dashboard',
-    element:<DashboardLayout></DashboardLayout>,
-    children:[],
-    }
+    path: '/dashboard',
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        index: true,
+        element: <Statistis></Statistis>
+
+      },
+      {
+        path: 'add-camp',
+        element: <AddCamp></AddCamp>
+      },
+      {
+        path: 'my-listings',
+        element: <Listing></Listing>
+      }
+    ]
+  }
 ]);
 
 

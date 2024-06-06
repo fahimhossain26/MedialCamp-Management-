@@ -79,7 +79,7 @@ const Sidebar = () => {
 
   
            {/* Home  */}
-            <NavLink
+            {/* <NavLink
                 to='/'
                 className={({ isActive }) =>
                   `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
@@ -90,11 +90,11 @@ const Sidebar = () => {
                 <FaHome className='w-5 h-5' />
 
                 <span className='mx-4 font-medium'>Home</span>
-              </NavLink>
+              </NavLink> */}
 
               {/* Statistics */}
               <NavLink
-                to='statistics'
+                to='/dashboard'
                 className={({ isActive }) =>
                   `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
                     isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
@@ -108,7 +108,7 @@ const Sidebar = () => {
 
               {/* Add Room */}
               <NavLink
-                to='add-room'
+                to='add-camp'
                 className={({ isActive }) =>
                   `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
                     isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
