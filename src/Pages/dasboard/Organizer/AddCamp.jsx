@@ -4,12 +4,15 @@ import AddCampForm from "../../../Components/Form/AddCampForm";
 import UseAuth from "../../../Components/hook/UseAuth";
 import { useMutation } from "@tanstack/react-query";
 import useAxiosSecure , { axiosSecure } from "../../../Components/hook/useAxiosSecure";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 // import { AuthContext } from "../../../Provider/AuthProvider";
 
 
 const AddCamp = () => { 
     const {user}=UseAuth()
     const axiosSecure= useAxiosSecure()
+    const navigate=useNavigate();
 
 
 
@@ -21,6 +24,14 @@ const AddCamp = () => {
       },
       onSuccess: ()=>{
         console.log('data saev suess fully ');
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        navigate('/dashboard/my-listings')
       }
     })
     
