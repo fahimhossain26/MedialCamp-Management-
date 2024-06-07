@@ -63,13 +63,13 @@ const CampDetails = () => {
           </div>
         <div>
         <p className=' text-lg font-bold text-gray-600 ml-20 '>
-            professional doctor :{camp?.healthcareProfessional}
+            professional doctor :{camp?.professionalName}
           </p>
           <p className=' text-lg font-bold text-gray-600 ml-20  '>
             Service Area :{ camp?.location}
           </p>
           <p className='mt-6 text-lg font-bold text-gray-600  ml-20 '>
-            Price:{camp?.campFees}$
+            Price:{camp?.price}$
           </p>
         </div>
           

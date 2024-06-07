@@ -2,14 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SingleCamp = ({camp}) => {
-    const { _id, campFees,campName, description, image, location } = camp
+    const { _id, campFees,price,campName, description, image, location,professionalName } = camp
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
       <figure><img src={image} alt="Shoes" /></figure>
       <div className="card-body">
         <h2 className="card-title mx-auto text-3xl font-mono font-bold text-orange-500 mb-2">{campName} </h2>
         <p>{description }</p>
-        <p className='text-orange-600 font-bold'><span className='text-black'>service Price:</span> {campFees}$</p>
+        {/* <p className='text-orange-600 font-bold'><span className='text-black'>service Price:</span> {campFees}$</p> */}
+        <p className='text-orange-600 font-bold'><span className='text-black'>service Price:</span> {price}$</p>
         <p className='text-orange-600 font-bold'><span className='text-black'>camp location :</span> {location}</p>
       
       {/* <div className='flex items-center gap-2'>
