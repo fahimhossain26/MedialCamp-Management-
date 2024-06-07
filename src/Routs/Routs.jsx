@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
         element: <AddCamp></AddCamp>
       },
       {
-        path: 'my-listings',
+        path: 'my-listing',
         element: <Listing></Listing>
       }
     ]

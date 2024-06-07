@@ -35,7 +35,7 @@ const CampDetails = () => {
 
         <div>
           <h1 className='mt-2 text-3xl font-semibold text-gray-800  mb-4 text-center'>
-          {camp?.campName}
+          {camp?.title}
 
 
           

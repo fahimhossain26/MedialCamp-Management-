@@ -31,7 +31,7 @@ const AddCamp = () => {
           showConfirmButton: false,
           timer: 1500
         });
-        navigate('/dashboard/my-listings')
+        navigate('/dashboard/my-listing')
       }
     })
     
