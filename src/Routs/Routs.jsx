@@ -11,6 +11,8 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import Statistis from "../Pages/common/Statistis";
 import AddCamp from "../Pages/dasboard/Organizer/AddCamp";
 import Listing from "../Pages/dasboard/Organizer/Listing";
+import Profile from "../Pages/common/Profile";
+import ManageUsers from "../Pages/dasboard/Admin/ManageUsers";
 
 
 
@@ -62,7 +64,16 @@ export const router = createBrowserRouter([
       {
         path: 'my-listing',
         element: <Listing></Listing>
+      },
+      {
+        path: 'manage-users',
+        element: <ManageUsers></ManageUsers>
+      },
+      {
+        path: 'profile',
+        element: <Profile></Profile>
       }
+
     ]
   }
 ]);

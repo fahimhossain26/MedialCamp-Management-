@@ -44,31 +44,31 @@ const AuthProvider = ({children}) => {
 
         const currentUser={
           email:user?.email,
-          role:'guest',
+          role:'participant',
           status:'verified'
         }
         const {data}=await axios.put(`${import.meta.env.VITE_API_URL}/user`,currentUser)
         return data
       }
 
-      //
-      // Get token from server start --------------
-  const getToken = async email => {
-    const { data } = await axios.post(
-      `${import.meta.env.VITE_API_URL}/jwt`,
-      { email },
-      { withCredentials: true }
-    )
-    return data
-  }
-// jwt close ----------------
+      
+//      // Get token from server start --------------
+//   const getToken = async email => {
+//     const { data } = await axios.post(
+//       `${import.meta.env.VITE_API_URL}/jwt`,
+//       { email },
+//       { withCredentials: true }
+//     )
+//     return data
+//   }
+// //jwt close ----------------
 
     useEffect(()=>{
         const unsubscribe=onAuthStateChanged(auth,currentUser=>{
             setUser(currentUser);
             console.log('current user',currentUser);
             if(currentUser){
-              getToken(currentUser.email)
+              // getToken(currentUser.email)
               saveUser(currentUser)
             }
             setLoading(false);

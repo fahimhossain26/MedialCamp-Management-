@@ -54,7 +54,7 @@ const Listing = () => {
             console.log(err);
         }
     }
-    if (isLoading) return <span className="loading loading-infinity loading-lg mx-auto flex "></span>
+    if (isLoading) return <span className="loading loading-infinity loading-lg mx-auto flex text-primary  "></span>
     return (
         <>
             <Helmet>

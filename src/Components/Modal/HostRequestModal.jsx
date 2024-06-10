@@ -45,7 +45,7 @@ const HostModal = ({ closeModal, isOpen, modalHandler }) => {
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
                     Please read all the terms & conditions before becoming a
-                    host.
+                    Organizer.
                   </p>
                 </div>
                 <hr className='mt-8 ' />
