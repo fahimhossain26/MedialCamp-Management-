@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useAxiosCommon from '../hook/useAxiosCommon';
 import { useQuery } from '@tanstack/react-query';
+import UseAuth from '../hook/UseAuth';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import BookingModal from '../Modal/BookingModal';
 
 
 const CampDetails = () => {
     // const camps=useLoaderData()
     //  const {_id, campFees,campName, description, image, location,healthcareProfessional}=camp
 
+    const[isOpen,setIsOpen]=useState(false)
+const closeModal=()=>{
+  setIsOpen(false)
+}
+
+
+
+
+    const [startDate, setStartDate] = useState(new Date());
+const {user}=UseAuth()
     const { id } = useParams()
     const axiosCommon = useAxiosCommon()
+
 
   const { data: camp = {}, isLoading} = useQuery({
     queryKey: ['camp', id],
@@ -45,7 +60,7 @@ const CampDetails = () => {
           
 
           <p className='mt-2 text-lg text-gray-600 ml-20  '>
-            {camp?.description}
+          <p  className='mt-6 text-sm font-bold text-gray-600 ml-20 '>Description :   </p>  {camp?.description}
           </p>
           <p className='mt-6 text-sm font-bold text-gray-600 ml-20 '>
           Service Provider Information:
@@ -74,26 +89,18 @@ const CampDetails = () => {
         </div>
           
         </div>
-      </div>
 
-      {/* Place A Bid Form */}
-
-      {/* <section className='p-6 w-full  bg-white rounded-md shadow-md flex-1 md:min-h-[350px] bg-blue-400'>
-        <h2 className='text-2xl font-semibold text-gray-700 capitalize text-center text-white '>
-          book Now
-        </h2> */}
-
-        {/* <form onSubmit={handelFromSubmit}>
+        <form>
           <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
             <div>
               <label className='text-black font-bold font-pops ' htmlFor='price'>
-                Price$
+                Camp fees$
               </label>
               <input
                 id='price'
                 type='text'
                 name='price'
-                defaultValue={price}
+                defaultValue={camp?.price}
                 disabled
 
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
@@ -115,23 +122,98 @@ const CampDetails = () => {
               />
             </div>
 
-            <div>
-              <label className='text-black font-bold font-pops ' htmlFor='comment'>
-              Special instruction 
+            <div className='space-y-1 text-sm'>
+                <label htmlFor='price' className='block text-gray-600'>
+                Date 
+                </label>
+                <DatePicker id='date' className="w-full px-4 py-3 text-gray-800 border border-blue-300 focus:outline-blue-500 rounded-md  " selected={startDate} onChange={(date) => setStartDate(date)} />
+              </div>
+
+
+              <div>
+              <label className='text-black font-bold font-pops' htmlFor='emailAddress'>
+                Camp Location
               </label>
               <input
-                id='comment'
-                name='comment'
-                type='text'
+                id='emailAddress'
+                type='email'
+                name='text'
+                defaultValue={camp?.location}
+                disabled
+
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
-            <div className='flex flex-col gap-2 '>
-              <label className='text-black font-bold font-pops'>Deadline</label>
 
-              
-              <DatePicker className="border p-2 px-6 rounded-md" selected={startDate} onChange={(date) => setStartDate(date)} />
+          
+          
+          </div>
+
+          {/* <div className='flex justify-end mt-6'>
+            <button onClick={()=>setIsOpen(true)}
+              type='submit'
+              className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-blue-800 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 btn-block'
+            >
+              Join Camp
+            </button>
+         
+          </div> */}
+        </form>
+        <div className='flex justify-end mt-6'>
+            <button onClick={()=>setIsOpen(true)}
+              type='submit'
+              className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-blue-800 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 btn-block'
+            >
+              Join Camp
+            </button>
+         
+          </div>
+        
+      </div>
+      <BookingModal isOpen={isOpen} closeModal={closeModal} bookingInfo={{...camp}} ></BookingModal>
+
+
+      {/* Place A Bid Form */}
+
+      {/* <section className='p-6 w-full bg-white rounded-md shadow-md flex-1 md:min-h-[150px] bg-blue-400'>
+        <h2 className='text-2xl font-semibold text-gray-700 capitalize text-center text-white '>
+          book Now
+        </h2> 
+
+         <form>
+          <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
+            <div>
+              <label className='text-black font-bold font-pops ' htmlFor='price'>
+                Price$
+              </label>
+              <input
+                id='price'
+                type='text'
+                name='price'
+                defaultValue={camp?.price}
+                disabled
+
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              />
             </div>
+
+            <div>
+              <label className='text-black font-bold font-pops' htmlFor='emailAddress'>
+                Email Address
+              </label>
+              <input
+                id='emailAddress'
+                type='email'
+                name='email'
+                defaultValue={user?.email}
+                disabled
+
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              />
+            </div>
+
+          
+          
           </div>
 
           <div className='flex justify-end mt-6'>
@@ -139,15 +221,15 @@ const CampDetails = () => {
               type='submit'
               className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-blue-800 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 btn-block'
             >
-              Place Bid
+              Join Camp
             </button>
 
           </div>
-        </form> */}
+        </form>
 
 
-        {/* <Modal></Modal> */}
-      {/* </section> */}
+        
+       </section>  */}
     </div>
     );
 };

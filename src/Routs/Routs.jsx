@@ -15,6 +15,8 @@ import Profile from "../Pages/common/Profile";
 import ManageUsers from "../Pages/dasboard/Admin/ManageUsers";
 import AdminRoute from "./AdminRouts";
 import HostRoute from "./HostRouts";
+import MyBookings from "../Pages/dasboard/Guest/MyBookings";
+import ManageBookings from "../Pages/dasboard/Organizer/ManageBookings"
 
 
 
@@ -78,6 +80,20 @@ export const router = createBrowserRouter([
         element: <PrivateRout><AdminRoute>
           <ManageUsers></ManageUsers>
         </AdminRoute>
+        </PrivateRout>
+      },
+      {
+        path: 'my-bookings',
+        element: <PrivateRout>
+          <MyBookings></MyBookings>
+        
+        </PrivateRout>
+      },
+      {
+        path: 'manage-bookings',
+        element: <PrivateRout><HostRoute>
+          <ManageBookings></ManageBookings>
+        </HostRoute>
         </PrivateRout>
       },
       {
