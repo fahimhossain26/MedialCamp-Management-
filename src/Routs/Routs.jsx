@@ -13,6 +13,8 @@ import AddCamp from "../Pages/dasboard/Organizer/AddCamp";
 import Listing from "../Pages/dasboard/Organizer/Listing";
 import Profile from "../Pages/common/Profile";
 import ManageUsers from "../Pages/dasboard/Admin/ManageUsers";
+import AdminRoute from "./AdminRouts";
+import HostRoute from "./HostRouts";
 
 
 
@@ -50,28 +52,37 @@ export const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <DashboardLayout></DashboardLayout>,
+    element: <PrivateRout><DashboardLayout></DashboardLayout></PrivateRout>,
     children: [
       {
         index: true,
-        element: <Statistis></Statistis>
+        element: <PrivateRout><Statistis></Statistis></PrivateRout>
 
       },
       {
         path: 'add-camp',
-        element: <AddCamp></AddCamp>
+        element: <PrivateRout><HostRoute>
+          <AddCamp></AddCamp>
+        </HostRoute>
+        </PrivateRout>
       },
       {
         path: 'my-listing',
-        element: <Listing></Listing>
+        element: <PrivateRout><HostRoute>
+          <Listing></Listing>
+        </HostRoute>
+        </PrivateRout>
       },
       {
         path: 'manage-users',
-        element: <ManageUsers></ManageUsers>
+        element: <PrivateRout><AdminRoute>
+          <ManageUsers></ManageUsers>
+        </AdminRoute>
+        </PrivateRout>
       },
       {
         path: 'profile',
-        element: <Profile></Profile>
+        element:<PrivateRout> <Profile></Profile></PrivateRout>
       }
 
     ]
