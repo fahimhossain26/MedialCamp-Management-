@@ -18,6 +18,8 @@ import HostRoute from "./HostRouts";
 import MyBookings from "../Pages/dasboard/Guest/MyBookings";
 import ManageBookings from "../Pages/dasboard/Organizer/ManageBookings"
 import Contact from "../Pages/Contact";
+import About from "../Pages/AboutUs/About";
+
 
 
 
@@ -34,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: 'availableCamp',
         element: <AvailableCamp></AvailableCamp>
+      },
+      {
+        path: 'about',
+        element: <About></About>
       },
       {
         path: 'contact',

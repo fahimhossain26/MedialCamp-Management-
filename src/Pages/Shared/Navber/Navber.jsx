@@ -113,9 +113,16 @@ const Navber = () => {
           <li className="btn   rounded-xl  bg-slate-300 ">
             <Link to={'/availableCamp'}> <div>Available Camp</div></Link>
           </li>
+
+          <li className="btn   rounded-xl  bg-slate-300 ">
+              <Link to={'about'}> <div>About US</div></Link>
+            </li>
+
           <li className="btn   rounded-xl  bg-slate-300 ">
               <Link to={'contact'}> <div>Contact us</div></Link>
             </li>
+
+
 
           {/* beacome a Organizer  */}
        {  user &&( 
