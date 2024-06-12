@@ -42,12 +42,12 @@ const Navber = () => {
       console.log(data);
       if(data.modifiedCount>0){
         // toast.success('success please wait for Admin confermation')
-        Swal.fire("success . please wait for Admin confermation 🔰");
+        Swal.fire("success . please wait for Admin confermation ⏳");
         
       }
       else{
         // toast.success(' please wait for Admin aproval🔰')
-        Swal.fire(" please wait for Admin aproval !⏳");
+        Swal.fire(" please wait for Admin aproval !🔰");
       }
 
     } catch (err) {
@@ -74,6 +74,9 @@ const Navber = () => {
 
             <li>
               <Link to={'/availableCamp'}> <div>Available Camp</div></Link>
+            </li>
+            <li>
+              <Link to={'contact'}> <div>Contact us</div></Link>
             </li>
 
 
@@ -110,16 +113,19 @@ const Navber = () => {
           <li className="btn   rounded-xl  bg-slate-300 ">
             <Link to={'/availableCamp'}> <div>Available Camp</div></Link>
           </li>
+          <li className="btn   rounded-xl  bg-slate-300 ">
+              <Link to={'contact'}> <div>Contact us</div></Link>
+            </li>
 
           {/* beacome a Organizer  */}
-          {/* { ! user &&( */}
+       {  user &&( 
           <li className="btn   rounded-xl  bg-slate-300 ">
             <button
               onClick={() => setModalOpen(true)}
             //  disabled={!user}
             > <div>Become a Organizer</div></button>
           </li>
-          {/* )} */}
+           )} 
           {/*Modal  */}
           <HostModal isOpen={isModalOpen} closeModal={closeModal} modalHandler={modalHandler}></HostModal>
 
