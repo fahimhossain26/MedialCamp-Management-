@@ -17,7 +17,7 @@ import { useEffect, useState } from 'react';
 export const Carousel7 = () => {
   const [currentSlider, setCurrentSlider] = useState(0);
   // The slider images array
-  const sliderImages = ['https://i.postimg.cc/nL72DCVk/American-Warehouses-Blog-The-Best-Approach-To-Leasing-Warehouse-Space.webp','https://i.postimg.cc/44FfYdYq/pexels-pixabay-269077-1200x800-jpg.webp','https://i.postimg.cc/pXpDjpqF/Advantages-of-Industrial-Buildings-1.jpg','https://i.postimg.cc/bNNmByLy/10-Indoor-coffee-bar.jpg','https://i.postimg.cc/K88CB7C5/28.webp'];
+  const sliderImages = ['https://i.postimg.cc/xCrFK6NP/gangasagar-transit-camp-babughat-kolkata-india-west-bengal-th-january-women-devotees-visiting-medica.webp','https://i.postimg.cc/wxQbmcqh/2023-2-largeimg-1112061952.jpg','https://i.postimg.cc/nzYTqpJH/Whats-App-Image-2023-04-26-at-11-45-40-AM.jpg','https://i.postimg.cc/FzHbcSpZ/gospelforasia-RT18-03070.jpg','https://i.postimg.cc/ZnW45fKN/1-cancer-adolescents-young-adults-1500.jpg'];
   const prevSlider = () => {
     setCurrentSlider((currentSlider) => (currentSlider === 0 ? sliderImages.length - 1 : currentSlider - 1));
   };

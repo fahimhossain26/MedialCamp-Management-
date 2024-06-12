@@ -20,7 +20,7 @@ const About = () => {
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">
       <h1 className="mb-5 text-5xl font-bold">About Our Program </h1>
-      <p className="mb-5 ">Many modern construction companies focus on sustainable building practices, incorporating eco-friendly material energy-efficient systems and environmental conscious designs to reduce the environmental impact of their projects.</p>
+      <p className="mb-5 ">Many modern Mecompanies focus on sustainable building practices, incorporating eco-friendly material energy-efficient systems and environmental conscious designs to reduce the environmental impact of their projects.</p>
      <Link to={'/'}> <button  className="btn btn-primary">Get Started</button></Link>
     </div>
   </div>
@@ -33,8 +33,8 @@ const About = () => {
 <div className="hero  ">
   <div className="hero-content text-center">
     <div className="max-w-md">
-      <h1 className="text-5xl font-bold">Our Company Achievements</h1>
-      <p className="py-6">Industrial Strength, Global Impact</p>
+      <h1 className="text-5xl font-bold">Our Medical Camp Achievements</h1>
+      <p className="py-6">Group  Strength, Global Impact</p>
     
       {/* <div className="  grid md:grid-cols-3  gap-5 ">
 

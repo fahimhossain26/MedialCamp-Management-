@@ -75,6 +75,9 @@ const Navber = () => {
             <li>
               <Link to={'/availableCamp'}> <div>Available Camp</div></Link>
             </li>
+            <li >
+              <Link to={'about'}> <div>About US</div></Link>
+            </li>
             <li>
               <Link to={'contact'}> <div>Contact us</div></Link>
             </li>
