@@ -35,7 +35,7 @@ const Navber = () => {
     try {
       const currentUser = {
         email: user?.email,
-        role: 'guest',
+        role: 'participant',
         status: 'Requested'
       }
       const { data } = await  axiosSecure.put(`/user`, currentUser)

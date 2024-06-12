@@ -18,6 +18,7 @@ import MenuItem from './Menu/MenuItem'
 import HostMenu from './Menu/HostMenu'
 import GuestMenu from './Menu/GuestMenu'
 import AdminMenu from './Menu/AdminMenu'
+import { FaChessBoard } from 'react-icons/fa'
 // import { MenuItem } from '@headlessui/react'
 
 
@@ -90,7 +91,7 @@ const Sidebar = () => {
   
           
 
-              <MenuItem  label='Statistics' address='/dashboard' icon={BsGraphUp} ></MenuItem>
+              <MenuItem  label='Dashboard' address='/dashboard' icon={FaChessBoard} ></MenuItem>
 
              
  
@@ -102,8 +103,8 @@ const Sidebar = () => {
 
 
               
-              {role ==='guest' && <GuestMenu></GuestMenu>}
-              {role ==='host' && <HostMenu></HostMenu>}
+              {role ==='participant' && <GuestMenu></GuestMenu>}
+              {role ==='organizer' && <HostMenu></HostMenu>}
                {/* <AdminMenu></AdminMenu> */}
               {role ==='admin' && <AdminMenu></AdminMenu>}
 

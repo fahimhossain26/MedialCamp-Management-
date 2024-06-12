@@ -22,7 +22,7 @@ import CheckoutForm from '../Form/CheckoutForm';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
-const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
+const BookingModal = ({ closeModal, isOpen, bookingInfo ,refetch}) => {
     // const [startDate, setStartDate] = useState(new Date());
     const { user } = UseAuth()
     const { id } = useParams()
@@ -93,11 +93,18 @@ const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
                                         Date:  {bookingInfo.date}
                                     </p>
                                 </div>
+                                {/* <div className='mt-2'>
+                                    <p className='text-sm text-gray-500'>
+                                        guest name :  {user.displayName}
+                                    </p>
+                                </div> */}
+                                {/* ------------- */}
                                 <div className='mt-2'>
                                     <p className='text-sm text-gray-500'>
-                                        perticipent name :  {user.displayName}
+                                    participant name :  {bookingInfo.participant.name}
                                     </p>
                                 </div>
+                                {/* --------------- */}
 
                                 <div className='mt-2'>
                                     <p className='text-sm text-gray-500'>
@@ -110,7 +117,8 @@ const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
                                     {/* checkout form */}
                                    <CheckoutForm
                                    bookingInfo={bookingInfo}
-                                    closeModal={closeModal}></CheckoutForm>
+                                    closeModal={closeModal}
+                                    refetch={refetch} ></CheckoutForm>
                                 </Elements>
 
 

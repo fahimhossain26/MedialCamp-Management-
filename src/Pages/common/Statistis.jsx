@@ -1,11 +1,14 @@
 import React from 'react';
+import useRole from '../../Components/hook/useRole';
+import HostStatistics from '../dasboard/Organizer/HostStatistics';
+import GuestStatistics from '../dasboard/Guest/GuestStatistics';
 
 const Statistis = () => {
-    return (
-        <div>
-            <h2>well come to dahsboard :statistis</h2>
-        </div>
-    );
+    const [role,isLoading]=useRole()
+    return <>
+    {role==='organizer' && <HostStatistics></HostStatistics>}
+    {role==='participant' && <GuestStatistics></GuestStatistics>}
+    </>
 };
 
 export default Statistis;

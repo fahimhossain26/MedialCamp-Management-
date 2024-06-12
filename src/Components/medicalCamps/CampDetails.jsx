@@ -6,6 +6,7 @@ import UseAuth from '../hook/UseAuth';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import BookingModal from '../Modal/BookingModal';
+import { Button } from '@headlessui/react';
 
 
 const CampDetails = () => {
@@ -26,7 +27,7 @@ const {user}=UseAuth()
     const axiosCommon = useAxiosCommon()
 
 
-  const { data: camp = {}, isLoading} = useQuery({
+  const { data: camp = {}, isLoading,refetch} = useQuery({
     queryKey: ['camp', id],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/camp/${id}`)
@@ -48,7 +49,7 @@ const {user}=UseAuth()
         
         </div>
 
-        <div>
+        <div className='bg-blue-50 rounded-lg'>
           <h1 className='mt-2 text-3xl font-semibold text-gray-800  mb-4 text-center'>
           {camp?.title}
 
@@ -60,21 +61,24 @@ const {user}=UseAuth()
           
 
           <p className='mt-2 text-lg text-gray-600 ml-20  '>
-          <p  className='mt-6 text-sm font-bold text-gray-600 ml-20 '>Description :   </p>  {camp?.description}
+          <p > <span className='mt-6 text-sm font-bold text-gray-600 ' >Description : </span>  {camp?.description}  </p> 
           </p>
           <p className='mt-6 text-sm font-bold text-gray-600 ml-20 '>
-          Service Provider Information:
+          Camp Provider Information:
           </p>
-          <div className='flex items-center gap-5 '>
-            {/* <div>
-              <p className='mt-2 text-sm  text-gray-600 '>Name:{buyer?.name}</p>
+
+          <div className='flex items-center gap-5 ml-20 mb-10  '>
+             <div>
+              <p className='mt-2 text-sm  text-gray-600 '>Organizer Name : {camp.organizer.Name}</p>
               <p className='mt-2 text-sm  text-gray-600 '>
-                Email: {buyer?.email}
+                Email: {camp.organizer.email}
               </p>
-            </div> */}
-            {/* <div className='rounded-full object-cover overflow-hidden w-14 h-14'>
-              <img src={buyer?.photo} alt='' />
-            </div> */}
+            </div> 
+             <div className='rounded-full object-cover overflow-hidden w-20 h-20'>
+              <img src={camp.organizer.image} alt='' />
+            </div> 
+
+
           </div>
         <div>
         <p className=' text-lg font-bold text-gray-600 ml-20 '>
@@ -90,7 +94,7 @@ const {user}=UseAuth()
           
         </div>
 
-        <form>
+        <form className='bg-blue-50'>
           <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
             <div>
               <label className='text-black font-bold font-pops ' htmlFor='price'>
@@ -158,22 +162,34 @@ const {user}=UseAuth()
             </button>
          
           </div> */}
+
+
         </form>
         <div className='flex justify-end mt-6'>
-            <button onClick={()=>setIsOpen(true)}
+            <button
+            disabled={camp?.booked}
+             onClick={()=>setIsOpen(true)}
+             
               type='submit'
               className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-blue-800 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 btn-block'
             >
-              Join Camp
+             {camp?.booked === true? 'booked' : ' Join Camp'}
             </button>
          
           </div>
         
+
+
+
+
+
+
+        
       </div>
-      <BookingModal isOpen={isOpen} closeModal={closeModal} bookingInfo={{...camp}} ></BookingModal>
+      <BookingModal isOpen={isOpen} closeModal={closeModal} bookingInfo={{...camp, participant: {name: user?.displayName,email: user?.email, image: user?.photoURL}}  }  refetch={refetch}></BookingModal>
 
 
-      {/* Place A Bid Form */}
+     
 
       {/* <section className='p-6 w-full bg-white rounded-md shadow-md flex-1 md:min-h-[150px] bg-blue-400'>
         <h2 className='text-2xl font-semibold text-gray-700 capitalize text-center text-white '>

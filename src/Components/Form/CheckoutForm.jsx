@@ -10,9 +10,11 @@ import './CheckoutForm.css'
 import { ImSpinner8 } from 'react-icons/im';
 import useAxiosSecure from '../hook/useAxiosSecure';
 import UseAuth from '../hook/UseAuth';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 // import UseAuth from '../hook/UseAuth';
 
-const CheckoutForm = ({ closeModal, bookingInfo }) => {
+const CheckoutForm = ({ closeModal, bookingInfo,refetch }) => {
     const stripe = useStripe();
     const elements = useElements();
     const axiosSecure = useAxiosSecure()
@@ -20,6 +22,7 @@ const CheckoutForm = ({ closeModal, bookingInfo }) => {
     const [cardError, setCardError] = useState('')
     const [processing, setProcessing] = useState(false)
     const { user } = UseAuth()
+    const  navigate=useNavigate()
 
 
     useEffect(() => {
@@ -94,9 +97,34 @@ const CheckoutForm = ({ closeModal, bookingInfo }) => {
             console.log(paymentIntent);
             const paymentInfo={
                 ...bookingInfo, transactionId:paymentIntent.id,
+                campId: bookingInfo._id,
                 date: new Date(),
             }
-            console.log(paymentInfo);
+            delete paymentInfo._id
+            console.log(paymentInfo)
+            try{
+
+               const {data}= await axiosSecure.post('/booking',paymentInfo)
+               console.log(data);
+
+
+
+                await axiosSecure.patch(`/camp/status/${bookingInfo?._id}`,{status: true,
+
+                })
+
+               
+              
+               //update ui
+               refetch()
+               closeModal()
+               Swal.fire("Camp booked Sucessfully!");
+
+               navigate('/dashboard/my-bookings')
+            }catch(err){
+
+           console.log(err);
+            }
 
         }
        setProcessing(false)

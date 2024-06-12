@@ -3,10 +3,13 @@ import { useState } from 'react'
 // import { format } from 'date-fns'
 import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import DeleteModal from '../Modal/DeleteModal'
+import UpdateCampModal from '../Modal/UpdateCampModal'
 
-const CampDataRows = ({ camp ,handelDelete }) => {
+const CampDataRows = ({ camp ,handelDelete ,refetch}) => {
     //for delete modal 
-    let [isOpen, setIsOpen] = useState(false)
+    const  [isOpen, setIsOpen] = useState(false)
+    const  [isEditModalOpen, setIsEditModalOpen] = useState(false)
+
     const closeModal=()=>{
         setIsOpen(false)
     }
@@ -57,14 +60,20 @@ const CampDataRows = ({ camp ,handelDelete }) => {
         <DeleteModal isOpen={isOpen} closeModal={closeModal} handelDelete={handelDelete } id={camp?._id} ></DeleteModal>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <span className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'>
+        <button onClick={()=>setIsEditModalOpen(true)} className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'>
           <span
             aria-hidden='true'
             className='absolute inset-0 bg-green-200 opacity-50 rounded-full'
           ></span>
           <span className='relative'>Update</span>
-        </span>
+        </button>
         {/* Update Modal */}
+        <UpdateCampModal isOpen={isEditModalOpen}
+         setIsEditModalOpen={setIsEditModalOpen}
+         camp={camp}
+         refetch={refetch}
+         ></UpdateCampModal>
+
       </td>
     </tr>
   )

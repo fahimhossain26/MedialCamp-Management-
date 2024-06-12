@@ -113,7 +113,9 @@ const Listing = () => {
                                 <tbody>{/* Room row data */}</tbody>
                                 {camps.map(camp =>
                                     // <p key={camp._id}>{camp.title}</p>
-                                    <CampDataRows key={camp._id} camp={camp}
+                                    <CampDataRows key={camp._id} 
+                                      camp={camp}
+                                      refetch={refetch}
                                         
                                         handelDelete={handelDelete}
                                     ></CampDataRows>
